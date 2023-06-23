@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, ButtonGroup, Dropdown, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CrudDataList = () => {
+  const navigate = useNavigate();
   const [empData, setEmpData] = useState([]);
 
-  const getInputData = () => {
+  const getInputData = (e) => {
+    e.preventDefault();
     fetch('http://localhost:3080/employee')
       .then((response) => {
         return response.json();
@@ -37,6 +39,13 @@ const CrudDataList = () => {
           console.log(err);
         });
     }
+  };
+
+  const editData = (e) => {
+    console.log('e-->', e);
+    navigate(`/crudedit/${e.id}`, {
+      state: { dataEdit: e },
+    });
   };
 
   return (
@@ -94,7 +103,10 @@ const CrudDataList = () => {
                               />
 
                               <Dropdown.Menu>
-                                <Dropdown.Item href="/crudedit/: empid">
+                                <Dropdown.Item
+                                  href="/crudedit/: empid"
+                                  onClick={() => editData(edata)}
+                                >
                                   Edit
                                 </Dropdown.Item>
                                 <Dropdown.Item onClick={() => delemp(edata.id)}>
