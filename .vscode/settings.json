@@ -1,0 +1,122 @@
+// {
+//     "terminal.integrated.defaultProfile.osx": "bash",
+//     "terminal.integrated.tabs.enabled": false,
+//     "workbench.iconTheme": "material-icon-theme",
+//     "editor.rulers": [
+
+//     ]
+// }
+
+// {
+//     "workbench.colorTheme": "Default Dark+",
+//     "workbench.iconTheme": "material-icon-theme",
+//   "typescript.updateImportsOnFileMove.enabled": "always",
+//   "javascript.updateImportsOnFileMove.enabled": "always",
+//     "terminal.integrated.tabs.enabled": false,
+//     "editor.formatOnSave": true,
+//     "prettier.singleQuote": true,
+//     "prettier.jsxSingleQuote": true,
+//     "editor.tabSize": 2
+// }
+
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.accessibilitySupport": "off",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.altClickMovesCursor": false,
+    // extra added
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.fixAll.eslint": true
+    },
+  
+    "editor.formatOnSave": true,
+  
+    "eslint.alwaysShowStatus": true,
+    "react-native-tools.showUserTips": false,
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "breadcrumbs.showBooleans": true,
+      "breadcrumbs.showArrays": true,
+      // "editor.defaultFormatter": "vscode.typescript-language-features",
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.associations": {
+      "*.tsx": "typescriptreact",
+      "*.php": "php"
+    },
+    "prettier.singleQuote": true,
+    "html.format.indentInnerHtml": true,
+    "editor.tabSize": 2,
+    "settingsSync.ignoredSettings": ["-eslint.nodePath"],
+    "eslint.options": {
+      "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", ".java"]
+    },
+    "eslint.validate": [
+      "markdown",
+      "mdx",
+      "md",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.autofetch": true,
+    "editor.minimap.enabled": false,
+    "[dart]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnType": true,
+      "editor.rulers": [80],
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": false
+    },
+    "emulator.emulatorPath": "C:\\Users\\DCUNI\\AppData\\Local\\Android\\Sdk\\emulator",
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+    },
+    "cmake.configureOnOpen": true,
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "terminal.integrated.tabs.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "redhat.telemetry.enabled": true,
+    "errorLens.excludeBySource": ["Java(0)"],
+    "window.zoomLevel": 0,
+    "editor.indentSize": "tabSize"
+    // "php.validate.executablePath": ""
+    // "editor.foldingMaximumRegions": 6000
+  }
+  
