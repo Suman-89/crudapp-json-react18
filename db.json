@@ -1,0 +1,22 @@
+{
+    "employee":[
+        {
+            "name": "Dipak Roy",
+            "email": "dipakroy@wmail.com",
+            "phone": "03324778585",
+            "gender": "male",
+            "status": false,
+            "performance": "good",
+            "id": 1687437578779
+        },
+        {
+            "name": "Dipankar Roy",
+            "email": "dipankar@wmail.com",
+            "phone": "03323458541",
+            "gender": "male",
+            "status": false,
+            "performance": "good",
+            "id": 1687437578779
+        }
+    ]
+}
