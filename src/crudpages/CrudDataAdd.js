@@ -41,13 +41,17 @@ const CrudDataAdd = () => {
           console.log('ndata-->', ndata);
           if (ndata.status === 201) {
             setError(false);
+            setOnBtnClick(true);
             setMessage('Registered successfully !!*');
             setTimeout(() => {
-              setNewData({
-                empName: '',
-                empEmail: '',
-                empPhone: '',
-              });
+              setNewData(
+                {
+                  empName: '',
+                  empEmail: '',
+                  empPhone: '',
+                },
+                2000
+              );
               setMessage('');
               Nav('/');
             }, 2000);

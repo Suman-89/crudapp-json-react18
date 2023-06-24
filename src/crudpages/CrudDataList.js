@@ -13,7 +13,7 @@ const CrudDataList = () => {
         return response.json();
       })
       .then((res) => {
-        console.log('res-->', res);
+        // console.log('res-->', res);
         setEmpData(res);
       })
       .catch((err) => {

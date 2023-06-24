@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Alert, Badge, Button, Card, Col, Form, Row } from 'react-bootstrap';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const CrudDataEdit = () => {
   const { empid } = useParams();
   const { state } = useLocation();
+  const homepage = useNavigate();
 
   const [newEditData, setNewEditData] = useState({
     empEditName: state.dataEdit.name || '',
@@ -30,7 +31,7 @@ const CrudDataEdit = () => {
       setTimeout(() => {
         setEditWarn('');
         setEditError(true);
-      });
+      }, 2000);
     } else {
       const editedNewData = {
         name: newEditData.empEditName,
@@ -43,6 +44,15 @@ const CrudDataEdit = () => {
         .patch(`http://localhost:3080/employee/${empid}`, editedNewData)
         .then((res) => {
           console.log('res-->', res);
+          if (res.status === 200) {
+            setEditError(false);
+            setBtnPress(true);
+            setEditWarn('Data edited successfully !!*');
+            setTimeout(() => {
+              setEditWarn('');
+              homepage('/');
+            }, 2000);
+          }
         })
         .catch((err) => {
           console.log('err-->', err);
@@ -55,7 +65,7 @@ const CrudDataEdit = () => {
   return (
     <div className="container my-4" style={{ width: '80%' }}>
       <Card>
-        <h4>
+        <span className="my-2" style={{ width: '20rem', margin: '0 auto 0' }}>
           {editWarn && btnPress === true ? (
             <Alert variant={editError === true ? 'danger' : 'success'}>
               {editWarn}
@@ -63,7 +73,7 @@ const CrudDataEdit = () => {
           ) : (
             <></>
           )}
-        </h4>
+        </span>
         <h4 className="my-3">
           <Badge bg="dark">Edit Employee Data</Badge>
         </h4>
