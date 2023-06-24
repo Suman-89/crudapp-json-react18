@@ -15,13 +15,17 @@ const CrudDataAdd = () => {
   const [error, setError] = useState(false);
   const [onBtnClick, setOnBtnClick] = useState(false);
   const [valMsg, setValMsg] = useState('');
+  const [phoneVal, setPhoneVal] = useState('');
 
   const addDataSubmit = (e) => {
     e.preventDefault();
 
     // const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-    console.log('regex-->', regex.test(newData.empEmail));
+    // console.log('regex-->', regex.test(newData.empEmail));
+
+    let vphone = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$');
+    // console.log('phoneregex-->', vphone.test(newData.empPhone));
 
     if (!newData.empName || !newData.empEmail || !newData.empPhone) {
       setError(true);
@@ -36,6 +40,13 @@ const CrudDataAdd = () => {
         setValMsg('Email is not valid !!*');
         setTimeout(() => {
           setValMsg('');
+        }, 2000);
+      }
+      if (vphone.test(newData.empPhone) === false) {
+        setOnBtnClick(true);
+        setPhoneVal('Invalid phone number !!*');
+        setTimeout(() => {
+          setPhoneVal('');
         }, 2000);
       }
     } else {
@@ -137,6 +148,17 @@ const CrudDataAdd = () => {
                     setNewData({ ...newData, empPhone: e.target.value })
                   }
                 />
+                {phoneVal && onBtnClick === true ? (
+                  <span
+                    style={{
+                      color: 'red',
+                    }}
+                  >
+                    {phoneVal}
+                  </span>
+                ) : (
+                  <></>
+                )}
               </Form.Group>
             </Row>
             <Button variant="primary" type="submit">
