@@ -8,9 +8,9 @@ const CrudDataEdit = () => {
   const { state } = useLocation();
 
   const [newEditData, setNewEditData] = useState({
-    empEditName: state?.dataEdit.name || '',
-    empEditEmail: state?.dataEdit.email || '',
-    empEditPhone: state?.dataEdit.phone || '',
+    empEditName: state.dataEdit.name || '',
+    empEditEmail: state.dataEdit.email || '',
+    empEditPhone: state.dataEdit.phone || '',
   });
   const [editError, setEditError] = useState(false);
   const [editWarn, setEditWarn] = useState('');
@@ -19,7 +19,11 @@ const CrudDataEdit = () => {
   const editData = (e) => {
     e.preventDefault();
 
-    if (!newEditData.name || !newEditData.email || !newEditData.phone) {
+    if (
+      !newEditData.empEditName ||
+      !newEditData.empEditEmail ||
+      !newEditData.empEditPhone
+    ) {
       setEditError(true);
       setEditWarn('Empty data can not be submitted !! *');
       setBtnPress(true);
@@ -29,7 +33,6 @@ const CrudDataEdit = () => {
       });
     } else {
       const editedNewData = {
-        id: Date.now(),
         name: newEditData.empEditName,
         email: newEditData.empEditEmail,
         phone: newEditData.empEditPhone,
@@ -47,9 +50,7 @@ const CrudDataEdit = () => {
     }
   };
 
-  useEffect(() => {
-    editData();
-  }, [empid]);
+  useEffect(() => {}, [state.dataEdit.empid]);
 
   return (
     <div className="container my-4" style={{ width: '80%' }}>

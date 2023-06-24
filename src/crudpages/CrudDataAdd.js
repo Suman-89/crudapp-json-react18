@@ -15,7 +15,7 @@ const CrudDataAdd = () => {
   const [error, setError] = useState(false);
   const [onBtnClick, setOnBtnClick] = useState(false);
 
-  const getData = (e) => {
+  const addDataSubmit = (e) => {
     e.preventDefault();
 
     if (!newData.empName || !newData.empEmail || !newData.empPhone) {
@@ -59,8 +59,6 @@ const CrudDataAdd = () => {
     }
   };
 
-  useEffect(() => {}, []);
-
   return (
     <div className="container my-5">
       <div className="card" style={{ width: '70%', margin: '0 auto 0' }}>
@@ -75,7 +73,7 @@ const CrudDataAdd = () => {
           ) : (
             <></>
           )}
-          <Form onSubmit={getData}>
+          <Form onSubmit={addDataSubmit}>
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Label>Employee Name*</Form.Label>

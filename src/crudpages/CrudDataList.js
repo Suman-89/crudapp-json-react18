@@ -7,8 +7,7 @@ const CrudDataList = () => {
   const navigate = useNavigate();
   const [empData, setEmpData] = useState([]);
 
-  const getInputData = (e) => {
-    e.preventDefault();
+  const getInputData = () => {
     fetch('http://localhost:3080/employee')
       .then((response) => {
         return response.json();
@@ -41,10 +40,10 @@ const CrudDataList = () => {
     }
   };
 
-  const editData = (e) => {
-    console.log('e-->', e);
-    navigate(`/crudedit/${e.id}`, {
-      state: { dataEdit: e },
+  const editData = (eData) => {
+    console.log('e-->', eData);
+    navigate(`/crudedit/${eData.id}`, {
+      state: { dataEdit: eData },
     });
   };
 
@@ -103,10 +102,7 @@ const CrudDataList = () => {
                               />
 
                               <Dropdown.Menu>
-                                <Dropdown.Item
-                                  href="/crudedit/: empid"
-                                  onClick={() => editData(edata)}
-                                >
+                                <Dropdown.Item onClick={() => editData(edata)}>
                                   Edit
                                 </Dropdown.Item>
                                 <Dropdown.Item onClick={() => delemp(edata.id)}>
