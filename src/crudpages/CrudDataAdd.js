@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -14,9 +14,14 @@ const CrudDataAdd = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
   const [onBtnClick, setOnBtnClick] = useState(false);
+  const [valMsg, setValMsg] = useState('');
 
   const addDataSubmit = (e) => {
     e.preventDefault();
+
+    // const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+    console.log('regex-->', regex.test(newData.empEmail));
 
     if (!newData.empName || !newData.empEmail || !newData.empPhone) {
       setError(true);
@@ -26,6 +31,13 @@ const CrudDataAdd = () => {
         setMessage('');
         setOnBtnClick(true);
       }, 1000);
+      if (regex.test(newData.empEmail) === false) {
+        setOnBtnClick(true);
+        setValMsg('Email is not valid !!*');
+        setTimeout(() => {
+          setValMsg('');
+        }, 2000);
+      }
     } else {
       const inputData = {
         id: Date.now(),
@@ -33,6 +45,7 @@ const CrudDataAdd = () => {
         email: newData.empEmail,
         phone: newData.empPhone,
       };
+
       setOnBtnClick(false);
 
       axios
@@ -94,13 +107,24 @@ const CrudDataAdd = () => {
               <Form.Group as={Col}>
                 <Form.Label>Email*</Form.Label>
                 <Form.Control
-                  type="email"
+                  type="text"
                   placeholder="Enter Email"
                   value={newData.empEmail}
                   onChange={(e) =>
                     setNewData({ ...newData, empEmail: e.target.value })
                   }
                 />
+                {valMsg && onBtnClick === true ? (
+                  <span
+                    style={{
+                      color: 'red',
+                    }}
+                  >
+                    {valMsg}
+                  </span>
+                ) : (
+                  <></>
+                )}
               </Form.Group>
 
               <Form.Group as={Col}>

@@ -56,6 +56,14 @@ const CrudDataEdit = () => {
         })
         .catch((err) => {
           console.log('err-->', err);
+          if (err.response.status === 404) {
+            setEditError(true);
+            setBtnPress(true);
+            setEditWarn('Oh snap ! You got an error !! *');
+            setTimeout(() => {
+              setEditWarn('');
+            }, 2000);
+          }
         });
     }
   };
