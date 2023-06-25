@@ -3,6 +3,7 @@ import './App.css';
 import CrudDataList from './crudpages/CrudDataList';
 import CrudDataAdd from './crudpages/CrudDataAdd';
 import CrudDataEdit from './crudpages/CrudDataEdit';
+import CrudDataView from './crudpages/CrudDataView';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route exact path="/" element={<CrudDataList />} />
             <Route exact path="/crudadd" element={<CrudDataAdd />} />
             <Route exact path="/crudedit/:empid" element={<CrudDataEdit />} />
+            <Route exact path="/crudview/:empid" element={<CrudDataView />} />
           </Routes>
         </BrowserRouter>
       </div>

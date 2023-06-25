@@ -47,6 +47,11 @@ const CrudDataList = () => {
     });
   };
 
+  const viewData = (vData) => {
+    console.log('vData-->', vData);
+    navigate(`/crudview/${vData.id}`);
+  };
+
   return (
     <div className="container my-3">
       <h2>
@@ -104,6 +109,9 @@ const CrudDataList = () => {
                               <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => editData(edata)}>
                                   Edit
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => viewData(edata)}>
+                                  View
                                 </Dropdown.Item>
                                 <Dropdown.Item onClick={() => delemp(edata.id)}>
                                   Delete

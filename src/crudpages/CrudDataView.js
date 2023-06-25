@@ -1,7 +1,49 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Badge, Card, Stack } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 
 const CrudDataView = () => {
-  return <div></div>;
+  const { empid } = useParams();
+  const [viewEmp, setViewEmp] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3080/employee/${empid}`)
+      .then((response) => {
+        console.log('response-->', response.data);
+        setViewEmp(response.data);
+      })
+      .catch((err) => {
+        console.log('err-->', err);
+      });
+  }, [empid]);
+
+  return (
+    <div className="container my-4" style={{ width: '80%' }}>
+      <Card>
+        <Card.Body>
+          <h3>
+            <Badge bg="info">Employee Details</Badge>
+          </h3>
+          <Stack gap={3}>
+            <div className="p-2">
+              <b>Name:</b> {viewEmp.name}
+            </div>
+            <div className="p-2">
+              <b>Email:</b> {viewEmp.email}
+            </div>
+            <div className="p-2">
+              <b>Phone:</b> {viewEmp.phone}
+            </div>
+          </Stack>
+          <Link className="my-3 btn btn-secondary" to="/">
+            Back to homepage
+          </Link>
+        </Card.Body>
+      </Card>
+    </div>
+  );
 };
 
 export default CrudDataView;
