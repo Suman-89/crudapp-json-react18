@@ -1,31 +1,22 @@
 {
   "employee": [
     {
-      "name": "Dipankar Roy",
-      "email": "dipankar@wmail.com",
-      "phone": "03323458541",
-      "gender": "male",
-      "status": false,
-      "performance": "good",
-      "id": 1687437578779
-    },
-    {
       "id": 1687549738898,
-      "name": "Dipti Sinha",
-      "email": "DiptiSinha@dmail.com",
+      "name": "Dipti Sen",
+      "email": "DiptiSen@dmail.com",
       "phone": "9874563210"
     },
     {
       "id": 1687611412155,
       "name": "Kamal Saha",
       "email": "kamal@rmail.com",
-      "phone": "9854321123"
+      "phone": "9863212125"
     },
     {
-      "id": 1687611552762,
-      "name": "Chittapriyo Sengupta",
-      "email": "chittapriyo@rmail.com",
-      "phone": "6547896325"
+      "id": 1698368811751,
+      "name": "Suman",
+      "email": "suman.mukherjee01@gmail.com",
+      "phone": "9632256569"
     }
   ]
 }

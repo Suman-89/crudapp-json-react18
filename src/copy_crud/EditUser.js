@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Badge, Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
-const CrudDataEdit = () => {
-  const { empid } = useParams();
-  const { state } = useLocation(); //need to ask
-  const homepage = useNavigate();
-
+const EditUser = () => {
+  const { state } = useLocation();
+  const { userid } = useParams();
+  const mainList = useNavigate();
   const [newEditData, setNewEditData] = useState({
     empEditName: state.dataEdit.name || '',
     empEditEmail: state.dataEdit.email || '',
@@ -26,14 +25,14 @@ const CrudDataEdit = () => {
       !newEditData.empEditPhone
     ) {
       setEditError(true);
-      setEditWarn('Empty data can not be submitted !! *');
       setBtnPress(true);
+      setEditWarn('Empty data can not be entered');
       setTimeout(() => {
         setEditWarn('');
         setEditError(true);
       }, 2000);
     } else {
-      const editedNewData = {
+      const editedData = {
         name: newEditData.empEditName,
         email: newEditData.empEditEmail,
         phone: newEditData.empEditPhone,
@@ -41,25 +40,25 @@ const CrudDataEdit = () => {
       setBtnPress(false);
 
       axios
-        .patch(`http://localhost:3080/employee/${empid}`, editedNewData)
+        .patch(`http://localhost:3080/employee/${userid}`, editedData)
         .then((res) => {
-          console.log('res-->', res);
+          console.log(res);
           if (res.status === 200) {
             setEditError(false);
             setBtnPress(true);
-            setEditWarn('Data edited successfully !!*');
+            setEditWarn('Data edited succcessfully');
             setTimeout(() => {
               setEditWarn('');
-              homepage('/');
-            }, 1000);
+              mainList('/');
+            }, 2000);
           }
         })
         .catch((err) => {
           console.log('err-->', err);
           if (err.response.status === 404) {
+            setEditWarn('Oh snap ! You got an error !!');
             setEditError(true);
             setBtnPress(true);
-            setEditWarn('Oh snap ! You got an error !! *');
             setTimeout(() => {
               setEditWarn('');
             }, 2000);
@@ -68,7 +67,7 @@ const CrudDataEdit = () => {
     }
   };
 
-  useEffect(() => {}, [state.dataEdit.empid]); //need to ask
+  useEffect(() => {}, [state.dataEdit.userid]);
 
   return (
     <div className="container my-4" style={{ width: '80%' }}>
@@ -146,4 +145,4 @@ const CrudDataEdit = () => {
   );
 };
 
-export default CrudDataEdit;
+export default EditUser;
